@@ -1,7 +1,5 @@
 syntax="proto3";
 
-import "google/protobuf/timestamp.proto";
-
 package protos.user;
 
 message UserObject {
@@ -10,9 +8,9 @@ message UserObject {
   string password = 3;
   bool is_active = 4;
   bool is_admin = 5;
-  google.protobuf.Timestamp created_at = 6;
+  string created_at = 6;
   string created_by = 7;
-  google.protobuf.Timestamp updated_at = 8;
+  string updated_at = 8;
   string updated_by = 9;
 }
 
@@ -28,7 +26,7 @@ message CreateUserResponse {
   string email = 2;
   bool is_active = 3;
   bool is_admin = 4;
-  google.protobuf.Timestamp created_at = 5;
+  string created_at = 5;
 }
 
 message GetUserRequest {
@@ -40,7 +38,7 @@ message GetUserResponse {
   string email = 2;
   bool is_active = 4;
   bool is_admin = 5;
-  google.protobuf.Timestamp created_at = 6;
+  string created_at = 6;
 }
 
 message UpdateUserRequest {
@@ -55,13 +53,14 @@ message UpdateUserResponse {
   string email = 2;
   bool is_active = 4;
   bool is_admin = 5;
-  google.protobuf.Timestamp created_at = 6;
-  google.protobuf.Timestamp updated_at = 7;
+  string created_at = 6;
+  string updated_at = 7;
 }
 
 message UpdatePasswordRequest {
   string id = 1;
   string password = 2;
+  string new_password = 3;
 }
 
 message UpdatePasswordResponse {
@@ -83,6 +82,11 @@ message LoginRequest {
 
 message LoginResponse {
   string access_token = 1;
+}
+
+message Status {
+  int32 code = 1;
+  string details = 2;
 }
 
 service UserService {
