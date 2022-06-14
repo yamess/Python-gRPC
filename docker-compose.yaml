@@ -1,18 +1,37 @@
 version: '3.9'
 
 services:
+  grpc:
+    build: .
+    container_name: py-grpc
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "50051:50051"
+    depends_on:
+      - "db"
+    command: ["python", "main.py"]
+    networks:
+      - grpc_network
+    links:
+      - db
+
   db:
     image: postgres:14.3
     container_name: grpc_user_db
     restart: always
-    environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+    env_file:
+      - .env
     ports:
-      - ${DB_PORT}:${DB_PORT}
+      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - grpc_network
 
 volumes:
   pgdata:
+
+networks:
+  grpc_network:

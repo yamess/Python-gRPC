@@ -1,11 +1,15 @@
+from typing import Optional, Union
+
+from jose import jwt
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
-import server.db.user_schema as sc
+import db.user_schema as sc
 import db.user_model as model
+from configs.env_vars import SECRET_KEY, ALGORITHM
 from utils.auth import hash_password, verify_password
 import logging
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
 
@@ -34,6 +38,14 @@ def get_user(session: Session, user_id: str):
         session.close()
 
 
+def get_user_by_email(session: Session, email: str):
+    try:
+        user = session.query(model.User).filter(model.User.email == email).first()
+        return user
+    finally:
+        session.close()
+
+
 def update_user(session: Session, data):
     try:
         user = session.query(model.User).filter(model.User.id == data.id).first()
@@ -55,7 +67,9 @@ def update_user(session: Session, data):
 def update_pwd(session: Session, data):
     try:
         user = session.query(model.User).filter(model.User.id == data.id).first()
-        if not verify_password(plain_password=data.password, hashed_password=user.password):
+        if not verify_password(
+            plain_password=data.password, hashed_password=user.password
+        ):
             raise ValueError("Wrong password")
 
         user.password = hash_password(data.new_password)
@@ -77,3 +91,26 @@ def delete_user(session: Session, user_id: str):
         raise e
     finally:
         session.close()
+
+
+def authenticate(session, auth_data: dict) -> Union[bool, model.User]:
+    user = get_user_by_email(session, auth_data["email"])
+    if not user:
+        return False
+    if not verify_password(
+        plain_password=auth_data["password"], hashed_password=user.password
+    ):
+        return False
+    return user
+
+
+def create_access_token(to_encode: dict, expires_delta: Optional[int] = None):
+    data = to_encode.copy()
+    if expires_delta:
+        expire = datetime.utcnow() + timedelta(minutes=expires_delta)
+    else:
+        expire = datetime.utcnow() + timedelta(minutes=30)
+
+    data.update({"exp": expire, "iat": datetime.utcnow(), "nbf": datetime.utcnow()})
+    encoded_jwt = jwt.encode(claims=to_encode, key=SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt

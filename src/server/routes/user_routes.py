@@ -1,21 +1,44 @@
 import grpc
-from psycopg2 import errors
 
-from configs.env_vars import SessionLocal
-from db.crud import create_user, get_user, update_user, update_pwd, delete_user
-from protos.user_pb2 import CreateUserRequest, CreateUserResponse, GetUserRequest, GetUserResponse, UpdateUserRequest, \
-    UpdateUserResponse, UpdatePasswordRequest, UpdatePasswordResponse, DeleteUserRequest, DeleteUserResponse
+from configs.env_vars import SessionLocal, ACCESS_TOKEN_EXPIRE_MINUTES
+from db.crud import create_user, get_user, update_user, update_pwd, delete_user, authenticate, create_access_token
+from protos.user_pb2 import (
+    CreateUserRequest,
+    CreateUserResponse,
+    GetUserRequest,
+    GetUserResponse,
+    UpdateUserRequest,
+    UpdateUserResponse,
+    UpdatePasswordRequest,
+    UpdatePasswordResponse,
+    DeleteUserRequest,
+    DeleteUserResponse,
+    LoginRequest,
+    LoginResponse,
+)
 from protos.user_pb2_grpc import UserServiceServicer
-import server.db.user_schema as sc
+import db.user_schema as sc
 import logging
 
 logger = logging.getLogger(__name__)
 
 
 class UserService(UserServiceServicer):
-    def Login(self, request, context):
+    def Login(self, request: LoginRequest, context) -> LoginResponse:
         try:
-
+            auth_data = {"email": request.email, "password": request.password}
+            user = authenticate(session=SessionLocal(), auth_data=auth_data)
+            if user:
+                data = {
+                    "user_id": user.id,
+                    "email": user.email,
+                    "is_active": user.is_active,
+                    "is_admin": user.is_admin,
+                }
+                access_token = create_access_token(
+                    to_encode=data, expires_delta=int(ACCESS_TOKEN_EXPIRE_MINUTES)
+                )
+                return LoginResponse(access_token=access_token)
         except Exception as e:
             logger.error(e)
             context.set_code(grpc.StatusCode.UNAUTHENTICATED)
@@ -27,7 +50,7 @@ class UserService(UserServiceServicer):
                 email=request.email,
                 password=request.password,
                 is_active=request.is_active,
-                is_admin=request.is_admin
+                is_admin=request.is_admin,
             )
             response = create_user(session=SessionLocal(), user=user)
             response = CreateUserResponse(
@@ -35,7 +58,7 @@ class UserService(UserServiceServicer):
                 email=response.email,
                 is_active=response.is_active,
                 is_admin=response.is_admin,
-                created_at=str(response.created_at)
+                created_at=str(response.created_at),
             )
 
             return response
@@ -52,7 +75,7 @@ class UserService(UserServiceServicer):
                 email=user.email,
                 is_active=user.is_active,
                 is_admin=user.is_admin,
-                created_at=str(user.created_at)
+                created_at=str(user.created_at),
             )
             return response
         except Exception as e:
@@ -69,7 +92,7 @@ class UserService(UserServiceServicer):
                 is_active=user.is_active,
                 is_admin=user.is_admin,
                 created_at=str(user.created_at),
-                updated_at=str(user.updated_at)
+                updated_at=str(user.updated_at),
             )
             return response
         except Exception as e:
@@ -77,7 +100,9 @@ class UserService(UserServiceServicer):
             context.set_code(grpc.StatusCode.INTERNAL)
             context.set_details("Error while Updating record")
 
-    def UpdatePassword(self, request: UpdatePasswordRequest, context) -> UpdatePasswordResponse:
+    def UpdatePassword(
+        self, request: UpdatePasswordRequest, context
+    ) -> UpdatePasswordResponse:
         try:
             update_pwd(SessionLocal(), request)
             response = UpdatePasswordResponse(message="Password updated with success")

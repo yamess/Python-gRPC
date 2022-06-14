@@ -14,7 +14,7 @@ class UserObject(BaseModel):
     updated_by: str
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class CreateUserRequest(BaseModel):
@@ -24,7 +24,7 @@ class CreateUserRequest(BaseModel):
     is_admin: bool
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class CreateUserResponse(BaseModel):
@@ -35,14 +35,15 @@ class CreateUserResponse(BaseModel):
     created_at: datetime
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class GetUserRequest(BaseModel):
     id: str
 
     class Config:
-        orm_mode=True
+        orm_mode = True
+
 
 class GetUserResponse(BaseModel):
     id: str
@@ -52,7 +53,7 @@ class GetUserResponse(BaseModel):
     created_at: datetime
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class UpdateUserRequest(BaseModel):
@@ -62,7 +63,7 @@ class UpdateUserRequest(BaseModel):
     is_admin: bool
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class UpdateUserResponse(BaseModel):
@@ -74,7 +75,7 @@ class UpdateUserResponse(BaseModel):
     updated_at: datetime
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class UpdatePasswordRequest(BaseModel):
@@ -82,28 +83,28 @@ class UpdatePasswordRequest(BaseModel):
     password: str
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class UpdatePasswordResponse(BaseModel):
     message: str
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class DeleteUserRequest(BaseModel):
     id: str
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class DeleteUserResponse(BaseModel):
     message: str
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class LoginRequest(BaseModel):
@@ -111,11 +112,11 @@ class LoginRequest(BaseModel):
     password: str
 
     class Config:
-        orm_mode=True
+        orm_mode = True
 
 
 class LoginResponse(BaseModel):
     access_token: str
 
     class Config:
-        orm_mode=True
+        orm_mode = True

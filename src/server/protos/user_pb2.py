@@ -7,161 +7,217 @@ from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\nuser.proto\x12\x0bprotos.user"\xae\x01\n\nUserObject\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x10\n\x08is_admin\x18\x05 \x01(\x08\x12\x12\n\ncreated_at\x18\x06 \x01(\t\x12\x12\n\ncreated_by\x18\x07 \x01(\t\x12\x12\n\nupdated_at\x18\x08 \x01(\t\x12\x12\n\nupdated_by\x18\t \x01(\t"Y\n\x11\x43reateUserRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x11\n\tis_active\x18\x03 \x01(\x08\x12\x10\n\x08is_admin\x18\x04 \x01(\x08"h\n\x12\x43reateUserResponse\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\tis_active\x18\x03 \x01(\x08\x12\x10\n\x08is_admin\x18\x04 \x01(\x08\x12\x12\n\ncreated_at\x18\x05 \x01(\t"\x1c\n\x0eGetUserRequest\x12\n\n\x02id\x18\x01 \x01(\t"e\n\x0fGetUserResponse\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x10\n\x08is_admin\x18\x05 \x01(\x08\x12\x12\n\ncreated_at\x18\x06 \x01(\t"S\n\x11UpdateUserRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\tis_active\x18\x03 \x01(\x08\x12\x10\n\x08is_admin\x18\x04 \x01(\x08"|\n\x12UpdateUserResponse\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x10\n\x08is_admin\x18\x05 \x01(\x08\x12\x12\n\ncreated_at\x18\x06 \x01(\t\x12\x12\n\nupdated_at\x18\x07 \x01(\t"K\n\x15UpdatePasswordRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x14\n\x0cnew_password\x18\x03 \x01(\t")\n\x16UpdatePasswordResponse\x12\x0f\n\x07message\x18\x01 \x01(\t"\x1f\n\x11\x44\x65leteUserRequest\x12\n\n\x02id\x18\x01 \x01(\t"%\n\x12\x44\x65leteUserResponse\x12\x0f\n\x07message\x18\x01 \x01(\t"/\n\x0cLoginRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t"%\n\rLoginResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t"\'\n\x06Status\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07\x64\x65tails\x18\x02 \x01(\t2\xdb\x03\n\x0bUserService\x12>\n\x05Login\x12\x19.protos.user.LoginRequest\x1a\x1a.protos.user.LoginResponse\x12M\n\nCreateUser\x12\x1e.protos.user.CreateUserRequest\x1a\x1f.protos.user.CreateUserResponse\x12\x44\n\x07GetUser\x12\x1b.protos.user.GetUserRequest\x1a\x1c.protos.user.GetUserResponse\x12M\n\nUpdateUser\x12\x1e.protos.user.UpdateUserRequest\x1a\x1f.protos.user.UpdateUserResponse\x12Y\n\x0eUpdatePassword\x12".protos.user.UpdatePasswordRequest\x1a#.protos.user.UpdatePasswordResponse\x12M\n\nDeleteUser\x12\x1e.protos.user.DeleteUserRequest\x1a\x1f.protos.user.DeleteUserResponseb\x06proto3'
+)
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\nuser.proto\x12\x0bprotos.user\"\xae\x01\n\nUserObject\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x10\n\x08is_admin\x18\x05 \x01(\x08\x12\x12\n\ncreated_at\x18\x06 \x01(\t\x12\x12\n\ncreated_by\x18\x07 \x01(\t\x12\x12\n\nupdated_at\x18\x08 \x01(\t\x12\x12\n\nupdated_by\x18\t \x01(\t\"Y\n\x11\x43reateUserRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x11\n\tis_active\x18\x03 \x01(\x08\x12\x10\n\x08is_admin\x18\x04 \x01(\x08\"h\n\x12\x43reateUserResponse\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\tis_active\x18\x03 \x01(\x08\x12\x10\n\x08is_admin\x18\x04 \x01(\x08\x12\x12\n\ncreated_at\x18\x05 \x01(\t\"\x1c\n\x0eGetUserRequest\x12\n\n\x02id\x18\x01 \x01(\t\"e\n\x0fGetUserResponse\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x10\n\x08is_admin\x18\x05 \x01(\x08\x12\x12\n\ncreated_at\x18\x06 \x01(\t\"S\n\x11UpdateUserRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\tis_active\x18\x03 \x01(\x08\x12\x10\n\x08is_admin\x18\x04 \x01(\x08\"|\n\x12UpdateUserResponse\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x11\n\tis_active\x18\x04 \x01(\x08\x12\x10\n\x08is_admin\x18\x05 \x01(\x08\x12\x12\n\ncreated_at\x18\x06 \x01(\t\x12\x12\n\nupdated_at\x18\x07 \x01(\t\"K\n\x15UpdatePasswordRequest\x12\n\n\x02id\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x14\n\x0cnew_password\x18\x03 \x01(\t\")\n\x16UpdatePasswordResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1f\n\x11\x44\x65leteUserRequest\x12\n\n\x02id\x18\x01 \x01(\t\"%\n\x12\x44\x65leteUserResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"/\n\x0cLoginRequest\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"%\n\rLoginResponse\x12\x14\n\x0c\x61\x63\x63\x65ss_token\x18\x01 \x01(\t\"\'\n\x06Status\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07\x64\x65tails\x18\x02 \x01(\t2\xdb\x03\n\x0bUserService\x12>\n\x05Login\x12\x19.protos.user.LoginRequest\x1a\x1a.protos.user.LoginResponse\x12M\n\nCreateUser\x12\x1e.protos.user.CreateUserRequest\x1a\x1f.protos.user.CreateUserResponse\x12\x44\n\x07GetUser\x12\x1b.protos.user.GetUserRequest\x1a\x1c.protos.user.GetUserResponse\x12M\n\nUpdateUser\x12\x1e.protos.user.UpdateUserRequest\x1a\x1f.protos.user.UpdateUserResponse\x12Y\n\x0eUpdatePassword\x12\".protos.user.UpdatePasswordRequest\x1a#.protos.user.UpdatePasswordResponse\x12M\n\nDeleteUser\x12\x1e.protos.user.DeleteUserRequest\x1a\x1f.protos.user.DeleteUserResponseb\x06proto3')
-
-
-
-_USEROBJECT = DESCRIPTOR.message_types_by_name['UserObject']
-_CREATEUSERREQUEST = DESCRIPTOR.message_types_by_name['CreateUserRequest']
-_CREATEUSERRESPONSE = DESCRIPTOR.message_types_by_name['CreateUserResponse']
-_GETUSERREQUEST = DESCRIPTOR.message_types_by_name['GetUserRequest']
-_GETUSERRESPONSE = DESCRIPTOR.message_types_by_name['GetUserResponse']
-_UPDATEUSERREQUEST = DESCRIPTOR.message_types_by_name['UpdateUserRequest']
-_UPDATEUSERRESPONSE = DESCRIPTOR.message_types_by_name['UpdateUserResponse']
-_UPDATEPASSWORDREQUEST = DESCRIPTOR.message_types_by_name['UpdatePasswordRequest']
-_UPDATEPASSWORDRESPONSE = DESCRIPTOR.message_types_by_name['UpdatePasswordResponse']
-_DELETEUSERREQUEST = DESCRIPTOR.message_types_by_name['DeleteUserRequest']
-_DELETEUSERRESPONSE = DESCRIPTOR.message_types_by_name['DeleteUserResponse']
-_LOGINREQUEST = DESCRIPTOR.message_types_by_name['LoginRequest']
-_LOGINRESPONSE = DESCRIPTOR.message_types_by_name['LoginResponse']
-_STATUS = DESCRIPTOR.message_types_by_name['Status']
-UserObject = _reflection.GeneratedProtocolMessageType('UserObject', (_message.Message,), {
-  'DESCRIPTOR' : _USEROBJECT,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.UserObject)
-  })
+_USEROBJECT = DESCRIPTOR.message_types_by_name["UserObject"]
+_CREATEUSERREQUEST = DESCRIPTOR.message_types_by_name["CreateUserRequest"]
+_CREATEUSERRESPONSE = DESCRIPTOR.message_types_by_name["CreateUserResponse"]
+_GETUSERREQUEST = DESCRIPTOR.message_types_by_name["GetUserRequest"]
+_GETUSERRESPONSE = DESCRIPTOR.message_types_by_name["GetUserResponse"]
+_UPDATEUSERREQUEST = DESCRIPTOR.message_types_by_name["UpdateUserRequest"]
+_UPDATEUSERRESPONSE = DESCRIPTOR.message_types_by_name["UpdateUserResponse"]
+_UPDATEPASSWORDREQUEST = DESCRIPTOR.message_types_by_name["UpdatePasswordRequest"]
+_UPDATEPASSWORDRESPONSE = DESCRIPTOR.message_types_by_name["UpdatePasswordResponse"]
+_DELETEUSERREQUEST = DESCRIPTOR.message_types_by_name["DeleteUserRequest"]
+_DELETEUSERRESPONSE = DESCRIPTOR.message_types_by_name["DeleteUserResponse"]
+_LOGINREQUEST = DESCRIPTOR.message_types_by_name["LoginRequest"]
+_LOGINRESPONSE = DESCRIPTOR.message_types_by_name["LoginResponse"]
+_STATUS = DESCRIPTOR.message_types_by_name["Status"]
+UserObject = _reflection.GeneratedProtocolMessageType(
+    "UserObject",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _USEROBJECT,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.UserObject)
+    },
+)
 _sym_db.RegisterMessage(UserObject)
 
-CreateUserRequest = _reflection.GeneratedProtocolMessageType('CreateUserRequest', (_message.Message,), {
-  'DESCRIPTOR' : _CREATEUSERREQUEST,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.CreateUserRequest)
-  })
+CreateUserRequest = _reflection.GeneratedProtocolMessageType(
+    "CreateUserRequest",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _CREATEUSERREQUEST,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.CreateUserRequest)
+    },
+)
 _sym_db.RegisterMessage(CreateUserRequest)
 
-CreateUserResponse = _reflection.GeneratedProtocolMessageType('CreateUserResponse', (_message.Message,), {
-  'DESCRIPTOR' : _CREATEUSERRESPONSE,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.CreateUserResponse)
-  })
+CreateUserResponse = _reflection.GeneratedProtocolMessageType(
+    "CreateUserResponse",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _CREATEUSERRESPONSE,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.CreateUserResponse)
+    },
+)
 _sym_db.RegisterMessage(CreateUserResponse)
 
-GetUserRequest = _reflection.GeneratedProtocolMessageType('GetUserRequest', (_message.Message,), {
-  'DESCRIPTOR' : _GETUSERREQUEST,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.GetUserRequest)
-  })
+GetUserRequest = _reflection.GeneratedProtocolMessageType(
+    "GetUserRequest",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _GETUSERREQUEST,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.GetUserRequest)
+    },
+)
 _sym_db.RegisterMessage(GetUserRequest)
 
-GetUserResponse = _reflection.GeneratedProtocolMessageType('GetUserResponse', (_message.Message,), {
-  'DESCRIPTOR' : _GETUSERRESPONSE,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.GetUserResponse)
-  })
+GetUserResponse = _reflection.GeneratedProtocolMessageType(
+    "GetUserResponse",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _GETUSERRESPONSE,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.GetUserResponse)
+    },
+)
 _sym_db.RegisterMessage(GetUserResponse)
 
-UpdateUserRequest = _reflection.GeneratedProtocolMessageType('UpdateUserRequest', (_message.Message,), {
-  'DESCRIPTOR' : _UPDATEUSERREQUEST,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.UpdateUserRequest)
-  })
+UpdateUserRequest = _reflection.GeneratedProtocolMessageType(
+    "UpdateUserRequest",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _UPDATEUSERREQUEST,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.UpdateUserRequest)
+    },
+)
 _sym_db.RegisterMessage(UpdateUserRequest)
 
-UpdateUserResponse = _reflection.GeneratedProtocolMessageType('UpdateUserResponse', (_message.Message,), {
-  'DESCRIPTOR' : _UPDATEUSERRESPONSE,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.UpdateUserResponse)
-  })
+UpdateUserResponse = _reflection.GeneratedProtocolMessageType(
+    "UpdateUserResponse",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _UPDATEUSERRESPONSE,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.UpdateUserResponse)
+    },
+)
 _sym_db.RegisterMessage(UpdateUserResponse)
 
-UpdatePasswordRequest = _reflection.GeneratedProtocolMessageType('UpdatePasswordRequest', (_message.Message,), {
-  'DESCRIPTOR' : _UPDATEPASSWORDREQUEST,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.UpdatePasswordRequest)
-  })
+UpdatePasswordRequest = _reflection.GeneratedProtocolMessageType(
+    "UpdatePasswordRequest",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _UPDATEPASSWORDREQUEST,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.UpdatePasswordRequest)
+    },
+)
 _sym_db.RegisterMessage(UpdatePasswordRequest)
 
-UpdatePasswordResponse = _reflection.GeneratedProtocolMessageType('UpdatePasswordResponse', (_message.Message,), {
-  'DESCRIPTOR' : _UPDATEPASSWORDRESPONSE,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.UpdatePasswordResponse)
-  })
+UpdatePasswordResponse = _reflection.GeneratedProtocolMessageType(
+    "UpdatePasswordResponse",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _UPDATEPASSWORDRESPONSE,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.UpdatePasswordResponse)
+    },
+)
 _sym_db.RegisterMessage(UpdatePasswordResponse)
 
-DeleteUserRequest = _reflection.GeneratedProtocolMessageType('DeleteUserRequest', (_message.Message,), {
-  'DESCRIPTOR' : _DELETEUSERREQUEST,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.DeleteUserRequest)
-  })
+DeleteUserRequest = _reflection.GeneratedProtocolMessageType(
+    "DeleteUserRequest",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _DELETEUSERREQUEST,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.DeleteUserRequest)
+    },
+)
 _sym_db.RegisterMessage(DeleteUserRequest)
 
-DeleteUserResponse = _reflection.GeneratedProtocolMessageType('DeleteUserResponse', (_message.Message,), {
-  'DESCRIPTOR' : _DELETEUSERRESPONSE,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.DeleteUserResponse)
-  })
+DeleteUserResponse = _reflection.GeneratedProtocolMessageType(
+    "DeleteUserResponse",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _DELETEUSERRESPONSE,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.DeleteUserResponse)
+    },
+)
 _sym_db.RegisterMessage(DeleteUserResponse)
 
-LoginRequest = _reflection.GeneratedProtocolMessageType('LoginRequest', (_message.Message,), {
-  'DESCRIPTOR' : _LOGINREQUEST,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.LoginRequest)
-  })
+LoginRequest = _reflection.GeneratedProtocolMessageType(
+    "LoginRequest",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _LOGINREQUEST,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.LoginRequest)
+    },
+)
 _sym_db.RegisterMessage(LoginRequest)
 
-LoginResponse = _reflection.GeneratedProtocolMessageType('LoginResponse', (_message.Message,), {
-  'DESCRIPTOR' : _LOGINRESPONSE,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.LoginResponse)
-  })
+LoginResponse = _reflection.GeneratedProtocolMessageType(
+    "LoginResponse",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _LOGINRESPONSE,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.LoginResponse)
+    },
+)
 _sym_db.RegisterMessage(LoginResponse)
 
-Status = _reflection.GeneratedProtocolMessageType('Status', (_message.Message,), {
-  'DESCRIPTOR' : _STATUS,
-  '__module__' : 'user_pb2'
-  # @@protoc_insertion_point(class_scope:protos.user.Status)
-  })
+Status = _reflection.GeneratedProtocolMessageType(
+    "Status",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _STATUS,
+        "__module__": "user_pb2"
+        # @@protoc_insertion_point(class_scope:protos.user.Status)
+    },
+)
 _sym_db.RegisterMessage(Status)
 
-_USERSERVICE = DESCRIPTOR.services_by_name['UserService']
+_USERSERVICE = DESCRIPTOR.services_by_name["UserService"]
 if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  _USEROBJECT._serialized_start=28
-  _USEROBJECT._serialized_end=202
-  _CREATEUSERREQUEST._serialized_start=204
-  _CREATEUSERREQUEST._serialized_end=293
-  _CREATEUSERRESPONSE._serialized_start=295
-  _CREATEUSERRESPONSE._serialized_end=399
-  _GETUSERREQUEST._serialized_start=401
-  _GETUSERREQUEST._serialized_end=429
-  _GETUSERRESPONSE._serialized_start=431
-  _GETUSERRESPONSE._serialized_end=532
-  _UPDATEUSERREQUEST._serialized_start=534
-  _UPDATEUSERREQUEST._serialized_end=617
-  _UPDATEUSERRESPONSE._serialized_start=619
-  _UPDATEUSERRESPONSE._serialized_end=743
-  _UPDATEPASSWORDREQUEST._serialized_start=745
-  _UPDATEPASSWORDREQUEST._serialized_end=820
-  _UPDATEPASSWORDRESPONSE._serialized_start=822
-  _UPDATEPASSWORDRESPONSE._serialized_end=863
-  _DELETEUSERREQUEST._serialized_start=865
-  _DELETEUSERREQUEST._serialized_end=896
-  _DELETEUSERRESPONSE._serialized_start=898
-  _DELETEUSERRESPONSE._serialized_end=935
-  _LOGINREQUEST._serialized_start=937
-  _LOGINREQUEST._serialized_end=984
-  _LOGINRESPONSE._serialized_start=986
-  _LOGINRESPONSE._serialized_end=1023
-  _STATUS._serialized_start=1025
-  _STATUS._serialized_end=1064
-  _USERSERVICE._serialized_start=1067
-  _USERSERVICE._serialized_end=1542
+    DESCRIPTOR._options = None
+    _USEROBJECT._serialized_start = 28
+    _USEROBJECT._serialized_end = 202
+    _CREATEUSERREQUEST._serialized_start = 204
+    _CREATEUSERREQUEST._serialized_end = 293
+    _CREATEUSERRESPONSE._serialized_start = 295
+    _CREATEUSERRESPONSE._serialized_end = 399
+    _GETUSERREQUEST._serialized_start = 401
+    _GETUSERREQUEST._serialized_end = 429
+    _GETUSERRESPONSE._serialized_start = 431
+    _GETUSERRESPONSE._serialized_end = 532
+    _UPDATEUSERREQUEST._serialized_start = 534
+    _UPDATEUSERREQUEST._serialized_end = 617
+    _UPDATEUSERRESPONSE._serialized_start = 619
+    _UPDATEUSERRESPONSE._serialized_end = 743
+    _UPDATEPASSWORDREQUEST._serialized_start = 745
+    _UPDATEPASSWORDREQUEST._serialized_end = 820
+    _UPDATEPASSWORDRESPONSE._serialized_start = 822
+    _UPDATEPASSWORDRESPONSE._serialized_end = 863
+    _DELETEUSERREQUEST._serialized_start = 865
+    _DELETEUSERREQUEST._serialized_end = 896
+    _DELETEUSERRESPONSE._serialized_start = 898
+    _DELETEUSERRESPONSE._serialized_end = 935
+    _LOGINREQUEST._serialized_start = 937
+    _LOGINREQUEST._serialized_end = 984
+    _LOGINRESPONSE._serialized_start = 986
+    _LOGINRESPONSE._serialized_end = 1023
+    _STATUS._serialized_start = 1025
+    _STATUS._serialized_end = 1064
+    _USERSERVICE._serialized_start = 1067
+    _USERSERVICE._serialized_end = 1542
 # @@protoc_insertion_point(module_scope)

@@ -2,7 +2,8 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import server.protos.user_pb2 as user__pb2
+from protos import user_pb2 as user__pb2
+# import server.protos.user_pb2 as user__pb2
 
 
 class UserServiceStub(object):
@@ -15,35 +16,35 @@ class UserServiceStub(object):
             channel: A grpc.Channel.
         """
         self.Login = channel.unary_unary(
-                '/protos.user.UserService/Login',
-                request_serializer=user__pb2.LoginRequest.SerializeToString,
-                response_deserializer=user__pb2.LoginResponse.FromString,
-                )
+            "/protos.user.UserService/Login",
+            request_serializer=user__pb2.LoginRequest.SerializeToString,
+            response_deserializer=user__pb2.LoginResponse.FromString,
+        )
         self.CreateUser = channel.unary_unary(
-                '/protos.user.UserService/CreateUser',
-                request_serializer=user__pb2.CreateUserRequest.SerializeToString,
-                response_deserializer=user__pb2.CreateUserResponse.FromString,
-                )
+            "/protos.user.UserService/CreateUser",
+            request_serializer=user__pb2.CreateUserRequest.SerializeToString,
+            response_deserializer=user__pb2.CreateUserResponse.FromString,
+        )
         self.GetUser = channel.unary_unary(
-                '/protos.user.UserService/GetUser',
-                request_serializer=user__pb2.GetUserRequest.SerializeToString,
-                response_deserializer=user__pb2.GetUserResponse.FromString,
-                )
+            "/protos.user.UserService/GetUser",
+            request_serializer=user__pb2.GetUserRequest.SerializeToString,
+            response_deserializer=user__pb2.GetUserResponse.FromString,
+        )
         self.UpdateUser = channel.unary_unary(
-                '/protos.user.UserService/UpdateUser',
-                request_serializer=user__pb2.UpdateUserRequest.SerializeToString,
-                response_deserializer=user__pb2.UpdateUserResponse.FromString,
-                )
+            "/protos.user.UserService/UpdateUser",
+            request_serializer=user__pb2.UpdateUserRequest.SerializeToString,
+            response_deserializer=user__pb2.UpdateUserResponse.FromString,
+        )
         self.UpdatePassword = channel.unary_unary(
-                '/protos.user.UserService/UpdatePassword',
-                request_serializer=user__pb2.UpdatePasswordRequest.SerializeToString,
-                response_deserializer=user__pb2.UpdatePasswordResponse.FromString,
-                )
+            "/protos.user.UserService/UpdatePassword",
+            request_serializer=user__pb2.UpdatePasswordRequest.SerializeToString,
+            response_deserializer=user__pb2.UpdatePasswordResponse.FromString,
+        )
         self.DeleteUser = channel.unary_unary(
-                '/protos.user.UserService/DeleteUser',
-                request_serializer=user__pb2.DeleteUserRequest.SerializeToString,
-                response_deserializer=user__pb2.DeleteUserResponse.FromString,
-                )
+            "/protos.user.UserService/DeleteUser",
+            request_serializer=user__pb2.DeleteUserRequest.SerializeToString,
+            response_deserializer=user__pb2.DeleteUserResponse.FromString,
+        )
 
 
 class UserServiceServicer(object):
@@ -52,180 +53,253 @@ class UserServiceServicer(object):
     def Login(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CreateUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def UpdateUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def UpdatePassword(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def DeleteUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
 
 def add_UserServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Login': grpc.unary_unary_rpc_method_handler(
-                    servicer.Login,
-                    request_deserializer=user__pb2.LoginRequest.FromString,
-                    response_serializer=user__pb2.LoginResponse.SerializeToString,
-            ),
-            'CreateUser': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateUser,
-                    request_deserializer=user__pb2.CreateUserRequest.FromString,
-                    response_serializer=user__pb2.CreateUserResponse.SerializeToString,
-            ),
-            'GetUser': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetUser,
-                    request_deserializer=user__pb2.GetUserRequest.FromString,
-                    response_serializer=user__pb2.GetUserResponse.SerializeToString,
-            ),
-            'UpdateUser': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateUser,
-                    request_deserializer=user__pb2.UpdateUserRequest.FromString,
-                    response_serializer=user__pb2.UpdateUserResponse.SerializeToString,
-            ),
-            'UpdatePassword': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdatePassword,
-                    request_deserializer=user__pb2.UpdatePasswordRequest.FromString,
-                    response_serializer=user__pb2.UpdatePasswordResponse.SerializeToString,
-            ),
-            'DeleteUser': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeleteUser,
-                    request_deserializer=user__pb2.DeleteUserRequest.FromString,
-                    response_serializer=user__pb2.DeleteUserResponse.SerializeToString,
-            ),
+        "Login": grpc.unary_unary_rpc_method_handler(
+            servicer.Login,
+            request_deserializer=user__pb2.LoginRequest.FromString,
+            response_serializer=user__pb2.LoginResponse.SerializeToString,
+        ),
+        "CreateUser": grpc.unary_unary_rpc_method_handler(
+            servicer.CreateUser,
+            request_deserializer=user__pb2.CreateUserRequest.FromString,
+            response_serializer=user__pb2.CreateUserResponse.SerializeToString,
+        ),
+        "GetUser": grpc.unary_unary_rpc_method_handler(
+            servicer.GetUser,
+            request_deserializer=user__pb2.GetUserRequest.FromString,
+            response_serializer=user__pb2.GetUserResponse.SerializeToString,
+        ),
+        "UpdateUser": grpc.unary_unary_rpc_method_handler(
+            servicer.UpdateUser,
+            request_deserializer=user__pb2.UpdateUserRequest.FromString,
+            response_serializer=user__pb2.UpdateUserResponse.SerializeToString,
+        ),
+        "UpdatePassword": grpc.unary_unary_rpc_method_handler(
+            servicer.UpdatePassword,
+            request_deserializer=user__pb2.UpdatePasswordRequest.FromString,
+            response_serializer=user__pb2.UpdatePasswordResponse.SerializeToString,
+        ),
+        "DeleteUser": grpc.unary_unary_rpc_method_handler(
+            servicer.DeleteUser,
+            request_deserializer=user__pb2.DeleteUserRequest.FromString,
+            response_serializer=user__pb2.DeleteUserResponse.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'protos.user.UserService', rpc_method_handlers)
+        "protos.user.UserService", rpc_method_handlers
+    )
     server.add_generic_rpc_handlers((generic_handler,))
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class UserService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def Login(request,
+    def Login(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protos.user.UserService/Login',
+            "/protos.user.UserService/Login",
             user__pb2.LoginRequest.SerializeToString,
             user__pb2.LoginResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CreateUser(request,
+    def CreateUser(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protos.user.UserService/CreateUser',
+            "/protos.user.UserService/CreateUser",
             user__pb2.CreateUserRequest.SerializeToString,
             user__pb2.CreateUserResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetUser(request,
+    def GetUser(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protos.user.UserService/GetUser',
+            "/protos.user.UserService/GetUser",
             user__pb2.GetUserRequest.SerializeToString,
             user__pb2.GetUserResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def UpdateUser(request,
+    def UpdateUser(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protos.user.UserService/UpdateUser',
+            "/protos.user.UserService/UpdateUser",
             user__pb2.UpdateUserRequest.SerializeToString,
             user__pb2.UpdateUserResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def UpdatePassword(request,
+    def UpdatePassword(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protos.user.UserService/UpdatePassword',
+            "/protos.user.UserService/UpdatePassword",
             user__pb2.UpdatePasswordRequest.SerializeToString,
             user__pb2.UpdatePasswordResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def DeleteUser(request,
+    def DeleteUser(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/protos.user.UserService/DeleteUser',
+            "/protos.user.UserService/DeleteUser",
             user__pb2.DeleteUserRequest.SerializeToString,
             user__pb2.DeleteUserResponse.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
