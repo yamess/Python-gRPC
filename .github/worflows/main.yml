@@ -1,0 +1,7 @@
+name: CD Pipeline
+on: [push]
+jobs:
+  Set-Environment:
+    runs-on: ubuntu-latest
+    steps:
+      run: apt-get update && apt-get upgrade -y
