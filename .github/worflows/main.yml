@@ -7,16 +7,22 @@ on:
     branches: ["main"]
 
 jobs:
-  Tests:
+  Tests & Build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: apt-get update && apt-get upgrade -y
-      - run: pip install -r requirements.txt
+      - name: Checkout Repos
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
       - run: pytest-cov -v
-  Build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build docker images
-        run: docker build . --env-file -t yamessdockerhub/python-grpc:$(BuildAgent.Build) yamessdockerhub/python-grpc:latest
+
+      - name: Build python image
+        run: |
+          python -m build
+      - run: ls
