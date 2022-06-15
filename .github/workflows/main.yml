@@ -7,7 +7,7 @@ on:
     branches: ["main"]
 
 jobs:
-  Tests and Build:
+  Tests-and-Build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repos
