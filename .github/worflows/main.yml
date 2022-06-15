@@ -12,4 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: apt-get update && apt-get upgrade -y
-      - run: ls
+      - run: pip install -r requirements.txt
+      - run: pytest-cov -v
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build docker images
+        run: docker build . --env-file -t yamessdockerhub/python-grpc:$(BuildAgent.Build) yamessdockerhub/python-grpc:latest
